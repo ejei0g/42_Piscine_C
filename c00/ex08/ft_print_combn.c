@@ -1,111 +1,79 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_combn.c                                   :+:      :+:    :+:   */
+/*   test2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeylee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/24 05:08:37 by jaeylee           #+#    #+#             */
-/*   Updated: 2020/01/25 02:04:01 by jaeylee          ###   ########.fr       */
+/*   Created: 2020/01/25 23:07:44 by jaeylee           #+#    #+#             */
+/*   Updated: 2020/01/26 00:09:24 by jaeylee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 #include <unistd.h>
-#define R 5
-#define N 4
-void	ft_print_comb(void)
+
+void	ft_putcomma(void)
 {
-	int i = 0;
-	int arr[6] = {0,1,2,3,4,5};
-	int selected[6];
+	char a;
+	char b;
 
-	while (i == 5)
-	{
-		
-		selected[i] = arr[i] 
-		i++;
-	}	
-	
-	
-
+	a = ',';
+	b = ' ';
+	write(1, &a, 1);
+	write(1, &b, 1);
 }
 
-
-void	ft_recul(int n)
+void	ft_putint(int nbr)
 {
-	if (n == 0)
-		return ;
-	ft_recul(n / 10);
+	int num;
 
+	num = nbr + 48;
+	write(1, &num, 1);
+}
+
+void	ft_rec(int n, int numlist, int *arr, int digit)
+{
+	int i;
+
+	i = 0;
+	if (n == digit)
+		return ;
+	while (numlist < 10)
+	{
+		arr[n] = numlist;
+		if (n == digit - 1)
+		{
+			while (i < digit)
+			{
+				ft_putint(arr[i]);
+				i++;
+			}
+			i = 0;
+			if (arr[0] == digit + 4)
+				return ;
+			else
+				ft_putcomma();
+		}
+		ft_rec(n + 1, numlist + 1, arr, digit);
+		numlist++;
+	}
 }
 
 void	ft_print_combn(int n)
 {
-	int num[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-	int sel[n];
-	
-	for(int i=0; i<10;i++){
-		for(int j=i+1;j<10;j++){
-			printf("%d,%d",i,j);	
-		}
-	}
-	
-	while(i<10)
-	{
+	int startnum;
+	int selected[n];
+	int numlist;
 
-		i++;
-	}
+	startnum = 0;
+	numlist = 0;
+	ft_rec(startnum, numlist, selected, n);
 }
-void whilewhile(int n)
-{
-	if(n==10) return ; 
-	while(n<10)
-	{
-		printf(n);
-		whilewhile(n+1);
-		n++;
-	}		
-}
-
-
-int selected[R];
-void full(int depth)
-{
-	int i;
-	if (R == depth)
-		printf("selected");
-	printf("\n");
-	
-	for(i=1;i<=N;i++) {
-	selected[depth]=i;
-		full(depth+1);
-	}
-}
-void onepick(void)
-{
-	int n = 10;
-	while (n > 0)
-	{
-		printf("%d",n);
-	n--;
-	}
-}
-
-void pick(int n, int[] picked, int toPick) {
-	if(toPick ==0) {printf("selected num");}
-
-	int smallest;
-
-	for (int next = smallist; next < n; ++next)
-	{
-		picked.push_back(next);
-		pick(n, picked, toPick - 1);
-		picked.pop_back();
-	}
-}	
 
 int		main(void)
 {
-	ft_print_digit(1);
-	return (0);
+	int n;
+
+	n = 6;
+	ft_print_combn(n);
 }
