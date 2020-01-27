@@ -1,50 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeylee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/24 05:00:08 by jaeylee           #+#    #+#             */
-/*   Updated: 2020/01/26 16:16:56 by jaeylee          ###   ########.fr       */
+/*   Created: 2020/01/27 12:20:18 by jaeylee           #+#    #+#             */
+/*   Updated: 2020/01/27 17:14:14 by jaeylee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_write(int n)
+void	ft_rev_int_tab(int *tab, int size)
 {
-	int a;
+	int temp_arr[size];
+	int i;
 
-	a = n + 48;
-	write(1, &a, 1);
-}
-
-void	ft_recul(int n)
-{
-	if (n == 0)
-		return ;
-	ft_recul(n / 10);
-	ft_write(n % 10);
-}
-
-void	ft_putnbr(int nbr)
-{
-	if (nbr > 0)
+	i = 0;
+	while (i < size)
 	{
-		ft_recul(nbr);
+		temp_arr[i] = tab[i];
+		i++;
 	}
-	else if (nbr < 0)
+	i = 0;
+	while (i < size)
 	{
-		write(1, "-", 1);
-		ft_recul(nbr * -1);
+		tab[i] = temp_arr[size - i - 1];
+		i++;
 	}
-	else
-		write(1, "0", 1);
-}
-
-int		main(void)
-{
-	ft_putnbr(2147483647);
-	return (0);
 }
