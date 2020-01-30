@@ -1,0 +1,6 @@
+Credentials cache: API:6248BB9F-91A6-4A01-8253-43660BA5B468
+        Principal: jaeylee@42SEOUL.KR
+
+  Issued                Expires               Principal
+Jan 20 13:42:11 2020  Jan 20 23:42:09 2020  HTTP/student-storage.42seoul.kr@42SEOUL.KR
+Jan 20 15:30:30 2020  Jan 20 23:42:09 2020  krbtgt/42SEOUL.KR@42SEOUL.KR
