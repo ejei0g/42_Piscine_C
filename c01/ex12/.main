@@ -1,0 +1,8 @@
+
+int		main(void)
+{
+	char *addr = "Bonjour les aminches...c est fo u.tout.ce qu on peut faire avec...print_memory....lol.lol. .";
+
+	ft_print_memory(addr, 92);
+	return (0);
+}
